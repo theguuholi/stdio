@@ -1,12 +1,30 @@
-name: ci
-on: [push]
+# name: ci
+# on: [push]
+# jobs:
+#   check-app:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v2 #pega os dados que acabou de subir e baixa na maquina ubunto (git checkout)
+#     - uses: actions/setup-go@v2 #instala o go na maquina ubunto actions sao apenas repositorios
+#       with:
+#         go-version: '1.16' #versao do go
+#     - run: go test #baixa as dependencias do go
+#     - run: go run math.go #roda o arquivo math.go aslf
+name: ci-golang
+on:
+  pull_request:
+    branches:
+      - develop
 jobs:
   check-app:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go: ['1.16', '1.15']
     steps:
     - uses: actions/checkout@v2 #pega os dados que acabou de subir e baixa na maquina ubunto (git checkout)
     - uses: actions/setup-go@v2 #instala o go na maquina ubunto actions sao apenas repositorios
       with:
-        go-version: '1.16' #versao do go
+        go-version: ${{ matrix.go }} #versao do go
     - run: go test #baixa as dependencias do go
     - run: go run math.go #roda o arquivo math.go aslf
