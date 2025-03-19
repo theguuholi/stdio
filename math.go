@@ -1,0 +1,9 @@
+package main
+
+func main() {
+	fmt.Println(Sum(1, 2))
+}
+
+func Sum(a int, b int) int {
+	return a + b
+}
