@@ -1,4 +1,4 @@
-name: c
+name: ci
 on: [push]
 jobs:
   check-app:
@@ -9,4 +9,4 @@ jobs:
       with:
         go-version: '1.16' #versao do go
     - run: go test #baixa as dependencias do go
-    - run: go run math.go #roda o arquivo math.go
+    - run: go run math.go #roda o arquivo math.go aslf
